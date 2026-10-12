@@ -1,0 +1,189 @@
+// Version: 4.0.0
+type AccessControlState__201339279 =
+  {
+    var adminAssigned : Bool;
+    userRoles : Map__230067015<Principal, UserRole__91647283>
+  };
+type Category__33333703 = {#culture; #events; #food; #places};
+type Category__442947546 = {#culture; #events; #food; #places};
+type Category__818102203 = {#culture; #events; #food; #places};
+type Data__44217153<K, V> = {var count : Nat__227979830; kvs : [var ?(K, V)]};
+type Internal__283199666<K, V> =
+  {children : [var ?Node__204828119<K, V>]; data : Data__44217153<K, V>};
+type ItemId__833640393 = Nat;
+type Item__1038381184 =
+  {
+    activityId : ?Text;
+    address : ?Text;
+    ageRequirements : ?Text;
+    area : Text;
+    category : Category__818102203;
+    createdAt : Nat;
+    createdBy : Principal;
+    dateOrHours : ?Text;
+    endDate : ?Text;
+    fullDescription : Text;
+    id : Nat;
+    lastVerified : ?Text;
+    mapsLink : ?Text;
+    price : ?Text;
+    registrationLink : ?Text;
+    shortDescription : Text;
+    sourceLink : ?Text;
+    startDate : ?Text;
+    startTime : ?Text;
+    status : ?Text;
+    tags : [Text];
+    title : Text
+  };
+type Item__1067160318 =
+  {
+    area : Text;
+    category : Category__33333703;
+    createdAt : Nat;
+    createdBy : Principal;
+    dateOrHours : ?Text;
+    fullDescription : Text;
+    id : Nat;
+    shortDescription : Text;
+    title : Text
+  };
+type Item__60644390 =
+  {
+    activityId : ?Text;
+    address : ?Text;
+    ageRequirements : ?Text;
+    area : Text;
+    category : Category__442947546;
+    createdAt : Timestamp__301639476;
+    createdBy : Principal;
+    dateOrHours : ?Text;
+    endDate : ?Text;
+    fullDescription : Text;
+    id : ItemId__833640393;
+    lastVerified : ?Text;
+    mapsLink : ?Text;
+    price : ?Text;
+    registrationLink : ?Text;
+    shortDescription : Text;
+    sourceLink : ?Text;
+    startDate : ?Text;
+    startTime : ?Text;
+    status : ?Text;
+    tags : [Text];
+    title : Text
+  };
+type Leaf__598469445<K, V> = {data : Data__44217153<K, V>};
+type Map__230067015<K, V> = Map__405889023<K, V>;
+type Map__405889023<K, V> = Map__603270868<K, V>;
+type Map__603270868<K, V> =
+  {var root : Node__204828119<K, V>; var size : Nat__227979830};
+type MessageId__291319400 = Nat;
+type Message__107021982 =
+  {
+    author : Principal;
+    authorName : Text;
+    createdAt : Nat;
+    id : Nat;
+    text : Text
+  };
+type Message__37048651 =
+  {
+    author : Principal;
+    authorName : Text;
+    createdAt : Nat;
+    id : Nat;
+    text : Text
+  };
+type Message__454780518 =
+  {
+    author : Principal;
+    authorName : Text;
+    createdAt : Timestamp__301639476;
+    id : MessageId__291319400;
+    text : Text
+  };
+type Nat__227979830 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NewActor__368071236 =
+  {
+    accessControlState : AccessControlState__201339279;
+    emails : Map__230067015<Principal, Text>;
+    items : Map__230067015<Nat, Item__1038381184>;
+    messages : Map__230067015<Nat, Message__107021982>;
+    nextItemId : {var value : Nat};
+    nextMessageId : {var value : Nat};
+    profiles : Map__230067015<Principal, UserProfile__244306451>;
+    seeded : {var value : Bool}
+  };
+type NewActor__563741893 =
+  {
+    accessControlState : AccessControlState__201339279;
+    emails : Map__230067015<Principal, Text>;
+    items : Map__230067015<Nat, Item__1067160318>;
+    messages : Map__230067015<Nat, Message__37048651>;
+    nextItemId : {var value : Nat};
+    nextMessageId : {var value : Nat};
+    profiles : Map__230067015<Principal, UserProfile__296944677>
+  };
+type Node__204828119<K, V> =
+  {#internal : Internal__283199666<K, V>; #leaf : Leaf__598469445<K, V>};
+type OldActor__313464652 =
+  {
+    accessControlState : AccessControlState__201339279;
+    emails : Map__230067015<Principal, Text>;
+    items : Map__230067015<Nat, OldItem__73642073>;
+    messages : Map__230067015<Nat, Message__107021982>;
+    nextItemId : {var value : Nat};
+    nextMessageId : {var value : Nat};
+    profiles : Map__230067015<Principal, UserProfile__244306451>
+  };
+type OldActor__325662370 = {};
+type OldItem__73642073 =
+  {
+    area : Text;
+    category : Category__818102203;
+    createdAt : Nat;
+    createdBy : Principal;
+    dateOrHours : ?Text;
+    fullDescription : Text;
+    id : Nat;
+    shortDescription : Text;
+    title : Text
+  };
+type Timestamp__301639476 = Nat;
+type UserProfile__244306451 = {displayName : Text; verifiedEmail : ?Text};
+type UserProfile__296944677 = {displayName : Text; verifiedEmail : ?Text};
+type UserProfile__446616884 = {displayName : Text; verifiedEmail : ?Text};
+type UserRole__91647283 = {#admin; #guest; #user};
+{
+  "00000001_000000" : OldActor__325662370 -> NewActor__563741893;
+  "00000002_000000" : (old : OldActor__313464652) -> NewActor__368071236
+}
+actor  {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__230067015<Principal, UserRole__91647283>
+    };
+  stable emails :
+    {var root : Node__204828119<Principal, Text>; var size : Nat__227979830};
+  stable items :
+    {
+      var root : Node__204828119<Nat, Item__60644390>;
+      var size : Nat__227979830
+    };
+  stable messages :
+    {
+      var root : Node__204828119<Nat, Message__454780518>;
+      var size : Nat__227979830
+    };
+  stable nextItemId : {var value : Nat};
+  stable nextMessageId : {var value : Nat};
+  stable profiles :
+    {
+      var root : Node__204828119<Principal, UserProfile__446616884>;
+      var size : Nat__227979830
+    };
+  stable seeded : {var value : Bool}
+};

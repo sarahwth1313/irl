@@ -1,0 +1,20 @@
+{
+  "overview": "IRL is a one-page Bangalore community site with a live chat, a curated board of local places and activities, and a simple profile.",
+  "features": [
+    "Browse a curated board of Bangalore places and activities",
+    "Filter by category and search by name, area, or tags",
+    "Open any entry for its full details, address, and links",
+    "Add your own entry to the board",
+    "Chat with the community",
+    "Sign in and set a display name"
+  ],
+  "category": "community-directory",
+  "tags": [
+    "bangalore",
+    "directory",
+    "community",
+    "events",
+    "places"
+  ],
+  "last_updated": "2026-10-12T11:28:55.241Z"
+}
